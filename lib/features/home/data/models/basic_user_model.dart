@@ -1,9 +1,10 @@
-import '../../domain/entities/basic_user.dart';
+class BasicUserModel {
+  String username;
+  String password;
 
-class BasicUserModel extends UserLogIn {
-  const BasicUserModel({
-    required super.username,
-    required super.password,
+  BasicUserModel({
+    required this.username,
+    required this.password,
   });
 
   Map<String, dynamic> toJson() {
@@ -11,5 +12,13 @@ class BasicUserModel extends UserLogIn {
       'username': username,
       'password': password,
     };
+  }
+
+  factory BasicUserModel.empty() {
+    return BasicUserModel(username: '', password: '');
+  }
+
+  bool authenticate() {
+    return username == "challenge@fudo" && password == "password";
   }
 }
