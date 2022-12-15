@@ -47,8 +47,8 @@ class PostRepositoryImpl implements PostRepository {
 
   @override
   Future<Either<Failure, Unit>> addPost(Post post) async {
-    final PostModel postModel = PostModel(title: post.title, body: post.body);
     if (await networkInfo.isConnected!) {
+      final PostModel postModel = PostModel(title: post.title, body: post.body);
       await remoteDataSource.addPost(postModel);
       return const Right(unit);
     } else {

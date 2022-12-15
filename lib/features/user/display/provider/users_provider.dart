@@ -42,4 +42,8 @@ class UsersProvider extends ChangeNotifier {
       },
     );
   }
+
+  void cleanIsConnected() {
+    isConnected = null;
+  }
 }

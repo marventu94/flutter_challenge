@@ -18,8 +18,10 @@ class PostsView extends StatefulWidget {
 class _PostsViewState extends State<PostsView> {
   @override
   void initState() {
-    Provider.of<PostsProvider>(context, listen: false).eitherFailureOrPosts();
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<PostsProvider>(context, listen: false).eitherFailureOrPosts();
+    });
   }
 
   @override
@@ -35,6 +37,7 @@ class _PostsViewState extends State<PostsView> {
           message: AppString.noConnection,
           context: context,
         );
+        Provider.of<PostsProvider>(context).cleanIsConnected();
       });
     }
 

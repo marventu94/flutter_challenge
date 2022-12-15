@@ -17,8 +17,4 @@ class BasicUserModel {
   factory BasicUserModel.empty() {
     return BasicUserModel(username: '', password: '');
   }
-
-  bool authenticate() {
-    return username == "challenge@fudo" && password == "password";
-  }
 }

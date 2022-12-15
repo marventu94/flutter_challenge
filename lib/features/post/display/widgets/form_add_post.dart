@@ -7,7 +7,8 @@ import '../../domain/entities/posts.dart';
 import '../provider/post_add_provider.dart';
 
 class FormAddPost extends StatefulWidget {
-  const FormAddPost({super.key});
+  const FormAddPost({super.key, required this.isConnected});
+  final bool isConnected;
 
   @override
   State<FormAddPost> createState() => _FormAddPostState();
@@ -34,6 +35,7 @@ class _FormAddPostState extends State<FormAddPost> {
       children: [
         TextFormField(
           controller: titleController,
+          enabled: widget.isConnected,
           decoration: InputDecoration(
             isDense: true,
             border: const OutlineInputBorder(),
@@ -43,6 +45,7 @@ class _FormAddPostState extends State<FormAddPost> {
         const SizedBox(height: 25),
         TextFormField(
           controller: bodyController,
+          enabled: widget.isConnected,
           maxLines: 8,
           decoration: InputDecoration(
             isDense: true,
@@ -53,18 +56,19 @@ class _FormAddPostState extends State<FormAddPost> {
         const SizedBox(height: 25),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: clicked
+            backgroundColor: clicked || !widget.isConnected
                 ? themeData.colorScheme.primary.withOpacity(0.7)
                 : themeData.colorScheme.primary,
           ),
           onPressed: () {
-            if (titleController.text.isEmpty || bodyController.text.isEmpty) {
-              SnakBarMessage().showErrorSnackBar(
-                message: AppString.emptyFields,
-                context: context,
-              );
-            }
             if (!clicked) {
+              if (titleController.text.isEmpty || bodyController.text.isEmpty) {
+                SnakBarMessage().showErrorSnackBar(
+                  message: AppString.emptyFields,
+                  context: context,
+                );
+                return;
+              }
               setState(() {
                 clicked = true;
               });
@@ -82,14 +86,5 @@ class _FormAddPostState extends State<FormAddPost> {
         ),
       ],
     );
-  }
-
-  cleanUp() {
-    FocusScope.of(context).unfocus();
-    titleController.text = '';
-    bodyController.text = '';
-    setState(() {
-      clicked = false;
-    });
   }
 }

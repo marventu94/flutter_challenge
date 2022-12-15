@@ -34,7 +34,7 @@ class PostAddProvider extends ChangeNotifier {
         failure = newFailure;
         notifyListeners();
       },
-      (_) {
+      (_) async {
         message = AppString.postSavedSuccessfully;
         failure = null;
         notifyListeners();
@@ -44,5 +44,9 @@ class PostAddProvider extends ChangeNotifier {
 
   void cleanMessage() {
     message = null;
+  }
+
+  void cleanFailure() {
+    failure = null;
   }
 }

@@ -18,8 +18,10 @@ class UsersView extends StatefulWidget {
 class _UsersViewState extends State<UsersView> {
   @override
   void initState() {
-    Provider.of<UsersProvider>(context, listen: false).eitherFailureOrUsers();
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<UsersProvider>(context, listen: false).eitherFailureOrUsers();
+    });
   }
 
   @override
@@ -35,6 +37,7 @@ class _UsersViewState extends State<UsersView> {
           message: AppString.noConnection,
           context: context,
         );
+        Provider.of<UsersProvider>(context).cleanIsConnected();
       });
     }
 

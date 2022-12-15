@@ -44,4 +44,8 @@ class PostsProvider extends ChangeNotifier {
       },
     );
   }
+
+  void cleanIsConnected() {
+    isConnected = null;
+  }
 }

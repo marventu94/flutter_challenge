@@ -73,7 +73,8 @@ class _LogInPageState extends State<LogInPage> {
                     const SizedBox(height: 25),
                     ElevatedButton(
                       onPressed: () {
-                        if (userLogIn.authenticate()) {
+                        if (userLogIn.username == "challenge@fudo" &&
+                            userLogIn.password == "password") {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => const HomePage(),
