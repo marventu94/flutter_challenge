@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../pages/log_in_page.dart';
+import '../provider/selected_page_provider.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -17,6 +19,8 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: () async {
+            Provider.of<SelectedPageProvider>(context, listen: false)
+                .setAuth(true);
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => const LogInPage(),

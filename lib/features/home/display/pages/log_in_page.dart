@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_challenge/core/string/app_string.dart';
 import 'package:flutter_challenge/features/home/data/models/basic_user_model.dart';
 import 'package:flutter_challenge/features/home/display/pages/home_page.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/util/snackbar_message.dart';
+import '../provider/selected_page_provider.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
@@ -77,6 +79,9 @@ class _LogInPageState extends State<LogInPage> {
                         onPressed: () {
                           if (userLogIn.username == "challenge@fudo" &&
                               userLogIn.password == "password") {
+                            Provider.of<SelectedPageProvider>(context,
+                                    listen: false)
+                                .setAuth(true);
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => const HomePage(),
