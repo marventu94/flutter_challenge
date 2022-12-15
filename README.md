@@ -12,7 +12,7 @@ cd flutter_challenge
 flutter run
 ```
 
-También se puede instalar el apk ya compilado. Se encuentra en la carpeta raiz con nombre de **app.apk**.
+También se puede instalar el apk ya compilado. Se encuentra en la carpeta raiz con el nombre de **app.apk**.
 
 ## Estructura de carpetas
 
