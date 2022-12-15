@@ -2,13 +2,17 @@
 
 Desafío de Flutter.
 
-## Instalación
+## Instrucciones de instalación
+
+Para correrlo desde código, se puede seguir los siguientes comandos
 
 ```sh
 git clone https://github.com/marventu94/flutter_challenge.git
 cd flutter_challenge
 flutter run
 ```
+
+También se puede instalar el apk, ya compilado. Se encuentra en la carpeta raiz con nombre de **app.apk**.
 
 ## Estructura de carpetas
 
