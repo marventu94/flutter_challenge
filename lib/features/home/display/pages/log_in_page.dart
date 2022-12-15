@@ -21,75 +21,78 @@ class _LogInPageState extends State<LogInPage> {
     return Scaffold(
       body: Container(
         color: theme.colorScheme.primary,
+        height: double.infinity,
         child: Center(
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: SizedBox(
-              width: 300,
-              height: 400,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Flutter Chanllenge',
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 50),
-                    TextFormField(
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                          userLogIn.username = value;
-                        }
-                      },
-                      decoration: InputDecoration(
-                        isDense: true,
-                        border: const OutlineInputBorder(),
-                        labelText: AppString.user,
+          child: SingleChildScrollView(
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: SizedBox(
+                width: 300,
+                height: 400,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Flutter Chanllenge',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    const SizedBox(height: 25),
-                    TextFormField(
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                          userLogIn.password = value;
-                        }
-                      },
-                      obscureText: true,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      decoration: InputDecoration(
-                        isDense: true,
-                        border: const OutlineInputBorder(),
-                        labelText: AppString.password,
+                      const SizedBox(height: 50),
+                      TextFormField(
+                        onChanged: (value) {
+                          if (value.isNotEmpty) {
+                            userLogIn.username = value;
+                          }
+                        },
+                        decoration: InputDecoration(
+                          isDense: true,
+                          border: const OutlineInputBorder(),
+                          labelText: AppString.user,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 25),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (userLogIn.username == "challenge@fudo" &&
-                            userLogIn.password == "password") {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const HomePage(),
-                            ),
-                          );
-                        } else {
-                          SnakBarMessage().showErrorSnackBar(
-                            message: AppString.incorrectCredentials,
-                            context: context,
-                          );
-                        }
-                      },
-                      child: const Text('Entrar'),
-                    ),
-                  ],
+                      const SizedBox(height: 25),
+                      TextFormField(
+                        onChanged: (value) {
+                          if (value.isNotEmpty) {
+                            userLogIn.password = value;
+                          }
+                        },
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          border: const OutlineInputBorder(),
+                          labelText: AppString.password,
+                        ),
+                      ),
+                      const SizedBox(height: 25),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (userLogIn.username == "challenge@fudo" &&
+                              userLogIn.password == "password") {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const HomePage(),
+                              ),
+                            );
+                          } else {
+                            SnakBarMessage().showErrorSnackBar(
+                              message: AppString.incorrectCredentials,
+                              context: context,
+                            );
+                          }
+                        },
+                        child: const Text('Entrar'),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

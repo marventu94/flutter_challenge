@@ -47,17 +47,24 @@ class _PostAddPageState extends State<PostAddPage> {
       });
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(AppString.postAdd),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.00),
-          child: FormAddPost(
-            key: formKey,
-            isConnected: isConnected ?? false,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(AppString.postAdd),
+        ),
+        body: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.00),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 500.0),
+                child: FormAddPost(
+                  key: formKey,
+                  isConnected: isConnected ?? false,
+                ),
+              ),
+            ),
           ),
         ),
       ),

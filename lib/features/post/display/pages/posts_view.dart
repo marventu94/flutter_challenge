@@ -45,17 +45,22 @@ class _PostsViewState extends State<PostsView> {
       return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Scrollbar(
-          child: ListView.builder(
-            itemCount: posts.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: ListCard(
-                  title: posts[index].title,
-                  subtitle: posts[index].body,
-                ),
-              );
-            },
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 500.0),
+              child: ListView.builder(
+                itemCount: posts.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: ListCard(
+                      title: posts[index].title,
+                      subtitle: posts[index].body,
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
         ),
       );

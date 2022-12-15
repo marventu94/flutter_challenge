@@ -44,18 +44,23 @@ class _UsersViewState extends State<UsersView> {
     if (users != null) {
       return Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Scrollbar(
-          child: ListView.builder(
-            itemCount: users.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: ListCard(
-                  title: users[index].email,
-                  subtitle: users[index].name,
-                ),
-              );
-            },
+        child: Center(
+          child: Scrollbar(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 500.0),
+              child: ListView.builder(
+                itemCount: users.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: ListCard(
+                      title: users[index].email,
+                      subtitle: users[index].name,
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
         ),
       );
