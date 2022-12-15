@@ -13,4 +13,6 @@ class AppString {
   static String postSavedSuccessfully = 'Posteo guardado con exito';
 
   static String noConnection = "No hay conexión a la red";
+
+  static String emptyFields = "Completa los campos para continuar";
 }

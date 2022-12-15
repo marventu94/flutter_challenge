@@ -28,8 +28,8 @@ class PostsProvider extends ChangeNotifier {
           sharedPreferences: await SharedPreferences.getInstance()),
       networkInfo: NetworkInfoImpl(DataConnectionChecker()),
     );
-    final failureOrActivity = await repository.getPosts();
-    failureOrActivity?.fold(
+    final failureOrPosts = await repository.getPosts();
+    failureOrPosts?.fold(
       (newFailure) {
         posts = null;
         isConnected = null;

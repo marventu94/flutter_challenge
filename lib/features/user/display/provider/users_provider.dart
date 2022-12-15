@@ -26,8 +26,8 @@ class UsersProvider extends ChangeNotifier {
           sharedPreferences: await SharedPreferences.getInstance()),
       networkInfo: NetworkInfoImpl(DataConnectionChecker()),
     );
-    final failureOrActivity = await repository.getUsers();
-    failureOrActivity?.fold(
+    final failureOrUsers = await repository.getUsers();
+    failureOrUsers?.fold(
       (newFailure) {
         users = null;
         isConnected = null;

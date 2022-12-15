@@ -9,6 +9,7 @@ import '../../../../core/errors/failures.dart';
 import '../../data/datasources/posts_local_data_source.dart';
 import '../../data/datasources/posts_remote_data_source.dart';
 import '../../data/repositories/post_repository_impl.dart';
+import '../../domain/entities/posts.dart';
 
 class PostAddProvider extends ChangeNotifier {
   Failure? failure;
@@ -19,15 +20,15 @@ class PostAddProvider extends ChangeNotifier {
     this.failure,
   });
 
-  void eitherFailureOrDoneMessage() async {
+  void eitherFailureOrDoneMessage(Post post) async {
     PostRepositoryImpl repository = PostRepositoryImpl(
       remoteDataSource: PostsRemoteDataSourceImpl(dio: Dio()),
       localDataSource: PostsLocalDataSourceImpl(
           sharedPreferences: await SharedPreferences.getInstance()),
       networkInfo: NetworkInfoImpl(DataConnectionChecker()),
     );
-    final failureOrActivity = await repository.getPosts();
-    failureOrActivity?.fold(
+    final failureOrActivity = await repository.addPost(post);
+    failureOrActivity.fold(
       (newFailure) {
         message = null;
         failure = newFailure;
@@ -39,5 +40,9 @@ class PostAddProvider extends ChangeNotifier {
         notifyListeners();
       },
     );
+  }
+
+  void cleanMessage() {
+    message = null;
   }
 }
