@@ -61,14 +61,17 @@ class _FormAddPostState extends State<FormAddPost> {
                 : themeData.colorScheme.primary,
           ),
           onPressed: () {
+            if (!widget.isConnected) {
+              return;
+            }
+            if (titleController.text.isEmpty || bodyController.text.isEmpty) {
+              SnakBarMessage().showErrorSnackBar(
+                message: AppString.emptyFields,
+                context: context,
+              );
+              return;
+            }
             if (!clicked) {
-              if (titleController.text.isEmpty || bodyController.text.isEmpty) {
-                SnakBarMessage().showErrorSnackBar(
-                  message: AppString.emptyFields,
-                  context: context,
-                );
-                return;
-              }
               setState(() {
                 clicked = true;
               });
