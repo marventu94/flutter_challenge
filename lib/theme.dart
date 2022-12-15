@@ -4,6 +4,7 @@ final ThemeData themeData = ThemeData(
   colorScheme: ColorScheme.fromSwatch().copyWith(
     primary: Colors.orangeAccent,
     secondary: Colors.black87,
+    background: Colors.grey[400],
   ),
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(

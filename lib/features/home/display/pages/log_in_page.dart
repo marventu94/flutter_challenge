@@ -73,7 +73,13 @@ class _LogInPageState extends State<LogInPage> {
                     const SizedBox(height: 25),
                     ElevatedButton(
                       onPressed: () {
-                        if (userLogIn.authenticate()) {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        );
+                        return;
+                        /*if (userLogIn.authenticate()) {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => const HomePage(),
@@ -84,7 +90,7 @@ class _LogInPageState extends State<LogInPage> {
                             message: AppString.incorrectCredentials,
                             context: context,
                           );
-                        }
+                        }*/
                       },
                       child: const Text('Entrar'),
                     ),

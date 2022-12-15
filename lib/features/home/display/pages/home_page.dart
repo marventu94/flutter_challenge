@@ -8,7 +8,7 @@ import '../provider/selected_page_provider.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_bottom_bar.dart';
 
-List<Widget> pages = const [PostsView(), UsersView()];
+List<Widget> pages = const [UsersView(), PostsView()];
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

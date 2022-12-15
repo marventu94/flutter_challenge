@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge/features/post/display/provider/posts_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'features/home/display/pages/log_in_page.dart';
 import 'features/home/display/provider/selected_page_provider.dart';
+import 'features/post/display/provider/post_add_provider.dart';
+import 'features/user/display/provider/users_provider.dart';
 import 'theme.dart';
 
 void main() {
@@ -18,6 +21,15 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => SelectedPageProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UsersProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PostsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PostAddProvider(),
         ),
       ],
       child: MaterialApp(

@@ -4,7 +4,7 @@ import '../../../../core/errors/exceptions.dart';
 import '../models/user_model.dart';
 
 abstract class UsersRemoteDataSource {
-  Future<List<UserModel>>? getAllUsers();
+  Future<List<UserModel>>? getUsers();
 }
 
 class UsersRemoteDataSourceImpl implements UsersRemoteDataSource {
@@ -13,7 +13,7 @@ class UsersRemoteDataSourceImpl implements UsersRemoteDataSource {
   UsersRemoteDataSourceImpl({required this.dio});
 
   @override
-  Future<List<UserModel>>? getAllUsers() async {
+  Future<List<UserModel>>? getUsers() async {
     try {
       final response =
           await dio.get('https://jsonplaceholder.typicode.com/users');

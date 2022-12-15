@@ -10,4 +10,7 @@ class AppString {
   static String postAdd = 'Nuevo Posteo';
   static String postTitle = 'Titulo';
   static String postBody = 'Contenido';
+  static String postSavedSuccessfully = 'Posteo guardado con exito';
+
+  static String noConnection = "No hay conexión a la red";
 }

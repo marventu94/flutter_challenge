@@ -6,7 +6,7 @@ import '../models/user_model.dart';
 
 abstract class UsersLocalDataSource {
   Future<void>? cacheUsers(List<UserModel>? usersToCache);
-  Future<List<UserModel>>? getAllUsers();
+  Future<List<UserModel>>? getUsers();
 }
 
 const cachedUsers = 'CACHED_USERS';
@@ -26,7 +26,7 @@ class UsersLocalDataSourceImpl implements UsersLocalDataSource {
   }
 
   @override
-  Future<List<UserModel>>? getAllUsers() {
+  Future<List<UserModel>>? getUsers() {
     final jsonString = sharedPreferences.getString(cachedUsers);
     if (jsonString != null) {
       Iterable ite = json.decode(jsonString);

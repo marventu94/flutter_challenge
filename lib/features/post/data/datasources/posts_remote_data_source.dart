@@ -8,7 +8,7 @@ import '../models/post_model.dart';
 const baseUrl = "https://jsonplaceholder.typicode.com";
 
 abstract class PostsRemoteDataSource {
-  Future<List<PostModel>>? getAllPosts();
+  Future<List<PostModel>>? getPosts();
   Future<Unit> addPost(PostModel postModel);
 }
 
@@ -18,7 +18,7 @@ class PostsRemoteDataSourceImpl implements PostsRemoteDataSource {
   PostsRemoteDataSourceImpl({required this.dio});
 
   @override
-  Future<List<PostModel>>? getAllPosts() async {
+  Future<List<PostModel>>? getPosts() async {
     try {
       final response = await dio.get('$baseUrl/posts');
       return List<PostModel>.from(

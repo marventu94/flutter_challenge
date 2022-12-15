@@ -24,7 +24,7 @@ class UserRepositoryImpl implements UserRepository {
   Future<Either<Failure, List<User>?>>? getUsers() async {
     if (await networkInfo.isConnected!) {
       try {
-        final remoteUsers = await remoteDataSource.getAllUsers();
+        final remoteUsers = await remoteDataSource.getUsers();
         localDataSource.cacheUsers(remoteUsers);
         return Right(remoteUsers);
       } on ServerException {
@@ -34,7 +34,7 @@ class UserRepositoryImpl implements UserRepository {
       }
     } else {
       try {
-        final localUsers = await remoteDataSource.getAllUsers();
+        final localUsers = await localDataSource.getUsers();
         return Right(localUsers);
       } on CacheException {
         return Left(

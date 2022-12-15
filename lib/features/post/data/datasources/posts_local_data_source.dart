@@ -6,7 +6,7 @@ import '../models/post_model.dart';
 
 abstract class PostsLocalDataSource {
   Future<void>? cachePosts(List<PostModel>? postsToCache);
-  Future<List<PostModel>>? getAllPosts();
+  Future<List<PostModel>>? getPosts();
 }
 
 const cachedPosts = 'CACHED_POSTS';
@@ -17,7 +17,7 @@ class PostsLocalDataSourceImpl implements PostsLocalDataSource {
   PostsLocalDataSourceImpl({required this.sharedPreferences});
 
   @override
-  Future<void>? cachePosts(List<PostModel>? postsToCache){
+  Future<void>? cachePosts(List<PostModel>? postsToCache) {
     if (postsToCache != null) {
       return sharedPreferences.setString(cachedPosts, jsonEncode(postsToCache));
     } else {
@@ -26,7 +26,7 @@ class PostsLocalDataSourceImpl implements PostsLocalDataSource {
   }
 
   @override
-  Future<List<PostModel>>? getAllPosts() {
+  Future<List<PostModel>>? getPosts() {
     final jsonString = sharedPreferences.getString(cachedPosts);
     if (jsonString != null) {
       Iterable ite = json.decode(jsonString);

@@ -25,7 +25,7 @@ class PostRepositoryImpl implements PostRepository {
   Future<Either<Failure, List<Post>?>>? getPosts() async {
     if (await networkInfo.isConnected!) {
       try {
-        final remotePosts = await remoteDataSource.getAllPosts();
+        final remotePosts = await remoteDataSource.getPosts();
         localDataSource.cachePosts(remotePosts);
         return Right(remotePosts);
       } on ServerException {
@@ -35,7 +35,7 @@ class PostRepositoryImpl implements PostRepository {
       }
     } else {
       try {
-        final localPosts = await remoteDataSource.getAllPosts();
+        final localPosts = await localDataSource.getPosts();
         return Right(localPosts);
       } on CacheException {
         return Left(
